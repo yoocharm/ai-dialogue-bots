@@ -25,4 +25,5 @@ github.com/milosgajdos/go-playht v0.1.0 h1:N0S8LvsGs/xE5cqDrzHE9pB1CQd4Hdp0KGyt2
 github.com/milosgajdos/go-playht v0.1.0/go.mod h1:KXtsK+GZNQC7Yh8yRsyx84qTckbeGxB5Q3Xfd7aTPSI=
 github.com/nats-io/nats.go v1.34.1 h1:syWey5xaNHZgicYBemv0nohUPPmaLteiBEUT6Q5+F/4=
 github.com/nats-io/nats.go v1.34.1/go.mod h1:Ubdu4Nh9exXdSz0RVWRFBbRfrbSxOYd26oF0wkWclB8=
-github.com/nats-io/nkeys v0.4.7 h1:RwNJbb
+github.com/nats-io/nkeys v0.4.7 h1:RwNJbbIdYCoClSDNY7QVKZlyb/wfT6ugvFCiKy6vDvI=
+github.com/nats-io/nkeys v0.
