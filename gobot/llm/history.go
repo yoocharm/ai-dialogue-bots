@@ -10,4 +10,10 @@ type History struct {
 
 func NewHistory(size int) *History {
 	return &History{
-		data: mak
+		data: make([]string, size),
+		size: size,
+		pos:  0,
+	}
+}
+
+func 
