@@ -18,4 +18,9 @@ func NewHistory(size int) *History {
 
 func (h *History) Add(element string) {
 	h.data[h.pos] = element
-	h.pos = (h.pos + 1) 
+	h.pos = (h.pos + 1) % h.size
+}
+
+func (h *History) String() string {
+	sb := strings.Builder{}
+	
