@@ -16,4 +16,6 @@ func NewHistory(size int) *History {
 	}
 }
 
-func 
+func (h *History) Add(element string) {
+	h.data[h.pos] = element
+	h.pos = (h.pos + 1) 
