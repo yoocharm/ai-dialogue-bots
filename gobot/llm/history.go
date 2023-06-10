@@ -26,4 +26,7 @@ func (h *History) String() string {
 	sb.Grow(h.size * (len(h.data[0]) + 1))
 
 	idx := h.pos
-	for i := 0; 
+	for i := 0; i < h.size; i++ {
+		sb.WriteString(h.data[idx])
+		if i < h.size-1 {
+	
