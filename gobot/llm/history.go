@@ -29,4 +29,9 @@ func (h *History) String() string {
 	for i := 0; i < h.size; i++ {
 		sb.WriteString(h.data[idx])
 		if i < h.size-1 {
-	
+			sb.WriteByte('\n')
+		}
+		idx = (idx + 1) % h.size
+	}
+
+	return sb.String()
