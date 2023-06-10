@@ -23,4 +23,7 @@ func (h *History) Add(element string) {
 
 func (h *History) String() string {
 	sb := strings.Builder{}
-	
+	sb.Grow(h.size * (len(h.data[0]) + 1))
+
+	idx := h.pos
+	for i := 0; 
