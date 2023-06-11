@@ -67,3 +67,15 @@ func (l *LLM) Stream(ctx context.Context, prompts chan string, jetChunks, ttsChu
 						g, ctx := errgroup.WithContext(ctx)
 						g.Go(func() error { return sendChunk(ctx, jetChunks, chunk) })
 						g.Go(func() error { return sendChunk(ctx, ttsChunks, chunk) })
+						if err := g.Wait(); err != nil {
+							return err
+						}
+						return nil
+					}
+				}))
+			if err != nil {
+				return err
+			}
+		}
+	}
+}
