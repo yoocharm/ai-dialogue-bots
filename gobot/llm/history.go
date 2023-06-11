@@ -35,3 +35,4 @@ func (h *History) String() string {
 	}
 
 	return sb.String()
+}
