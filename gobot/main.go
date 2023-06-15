@@ -128,3 +128,47 @@ func main() {
 		return s.Reader.Read(ctx, prompts)
 	})
 	g.Go(func() error {
+		return s.Writer.Write(ctx, jetChunks, ttsDone)
+	})
+
+	var prompt string
+	for {
+		fmt.Println("Your prompt:")
+		reader := bufio.NewReader(os.Stdin)
+		prompt, err = reader.ReadString('\n')
+		if err != nil {
+			log.Println("failed reading prompt: ", err)
+			continue
+		}
+		if prompt != "" {
+			break
+		}
+	}
+
+	// send the prompt or exit
+	select {
+	case prompts <- prompt:
+	case <-ctx.Done():
+	}
+
+	// TODO: this must run on the main thread otherwise bad things happen
+	streamer, format, err := mp3.Decode(pipeReader)
+	if err != nil {
+		log.Printf("failed to initialize MP3 decoder: %v\n", err)
+	}
+	defer streamer.Close()
+
+	if err := speaker.Init(format.SampleRate, format.SampleRate.N(time.Second/10)); err != nil {
+		log.Printf("Failed to initialize speaker: :%v\n", err)
+	}
+
+	speaker.Play(beep.Seq(streamer, beep.Callback(func() {
+		<-ctx.Done()
+	})))
+
+	if err := g.Wait(); err != nil {
+		if err != context.Canceled {
+			log.Fatalf("encountered error: %v", err)
+		}
+	}
+}
