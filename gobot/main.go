@@ -61,3 +61,70 @@ func main() {
 		log.Println("shutting down: received SIGINT...")
 		cancel()
 	}()
+
+	url := os.Getenv("NATS_URL")
+	if url == "" {
+		url = nats.DefaultURL
+	}
+
+	// NOTE: we could also provide functional options
+	// instead of creating stream from Config.
+	jetConf := jet.Config{
+		StreamURL:   url,
+		StreamName:  streamName,
+		DurableName: botName,
+		PubSubject:  pubSubject,
+		SubSubject:  subSubject,
+	}
+	s, err := jet.NewStream(ctx, jetConf)
+	if err != nil {
+		log.Fatalf("failed creating JetStream: %v", err)
+	}
+
+	// NOTE: we could also provide functional options
+	// instead of creating llm from Config.
+	llmConf := llm.Config{
+		ModelName:  modelName,
+		HistSize:   histSize,
+		SeedPrompt: seedPrompt,
+	}
+	l, err := llm.New(llmConf)
+	if err != nil {
+		log.Fatal("failed creating LLM client: ", err)
+	}
+
+	// NOTE: we could also provide functional options
+	// instead of creating tts from Config.
+	ttsConf := tts.DefaultConfig()
+	ttsConf.VoiceID = voiceID
+	t, err := tts.New(*ttsConf)
+	if err != nil {
+		log.Fatal("failed creating TTS client: ", err)
+	}
+
+	pipeReader, pipeWriter := io.Pipe()
+
+	log.Println("created pipe reader")
+
+	// chunks for TTS stream
+	ttsChunks := make(chan []byte, 100)
+	// chunk for JetStream
+	jetChunks := make(chan []byte, 100)
+	prompts := make(chan string)
+	// ttsDone for signalling we're done talking
+	ttsDone := make(chan struct{})
+
+	g, ctx := errgroup.WithContext(ctx)
+
+	log.Println("launching workers")
+
+	g.Go(func() error {
+		return t.Stream(ctx, pipeWriter, ttsChunks, ttsDone)
+	})
+	g.Go(func() error {
+		return l.Stream(ctx, prompts, jetChunks, ttsChunks)
+	})
+	g.Go(func() error {
+		return s.Reader.Read(ctx, prompts)
+	})
+	g.Go(func() error {
