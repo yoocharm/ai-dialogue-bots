@@ -94,3 +94,20 @@ func (t *TTS) Stream(ctx context.Context, pw *io.PipeWriter, chunks <-chan []byt
 			}
 			n, err := buf.Write(chunk)
 			if err != nil {
+				if err == ErrBufferFull {
+					if err := t.flush(ctx, pw, buf, req, done); err != nil {
+						return err
+					}
+					// NOTE: flush resets the buffer and we need
+					// to write the remaining chunks to it which
+					// have not fitted into the buffer on the last write.
+					if _, err := buf.Write(chunk[n:]); err != nil {
+						return err
+					}
+					continue
+				}
+				return err
+			}
+		}
+	}
+}
