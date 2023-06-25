@@ -7,4 +7,6 @@ edition = "2021"
 
 [dependencies]
 async-nats = { version = "0.34", features = ["service"] }
-tokio = { version = "1", feat
+tokio = { version = "1", features = ["full"] }
+tokio-stream = { version = "0.1" }
+serde_json =
