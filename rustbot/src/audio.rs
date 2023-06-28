@@ -5,4 +5,9 @@ use std::io::Cursor;
 use tokio::{
     self,
     io::{self, AsyncReadExt},
-    sync::watc
+    sync::watch,
+    time::{self, Duration, Instant},
+};
+
+pub async fn play(
+    mut au
