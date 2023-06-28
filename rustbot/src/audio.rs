@@ -10,4 +10,6 @@ use tokio::{
 };
 
 pub async fn play(
-    mut au
+    mut audio_rd: io::DuplexStream,
+    sink: Sink,
+    audio_done: watch::Sender<b
