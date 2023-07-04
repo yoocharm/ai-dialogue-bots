@@ -17,4 +17,5 @@ pub async fn play(
 ) -> Result<()> {
     println!("launching audio player");
     let mut audio_data = BytesMut::new();
-    // TODO: make this a cli switch as this val
+    // TODO: make this a cli switch as this value has been picked rather arbitrarily
+    let interval_duration = Duration
