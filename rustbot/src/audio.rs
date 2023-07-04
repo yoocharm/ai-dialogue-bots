@@ -16,4 +16,5 @@ pub async fn play(
     mut done: watch::Receiver<bool>,
 ) -> Result<()> {
     println!("launching audio player");
-    let mut aud
+    let mut audio_data = BytesMut::new();
+    // TODO: make this a cli switch as this val
