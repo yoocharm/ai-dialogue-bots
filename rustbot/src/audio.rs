@@ -19,4 +19,5 @@ pub async fn play(
     let mut audio_data = BytesMut::new();
     // TODO: make this a cli switch as this value has been picked rather arbitrarily
     let interval_duration = Duration::from_millis(AUDIO_INTERVAL);
-    let mut interval = time::
+    let mut interval = time::interval(interval_duration);
+    let mut last_play_time = Instant::now()
