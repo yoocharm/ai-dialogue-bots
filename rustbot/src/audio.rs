@@ -20,4 +20,8 @@ pub async fn play(
     // TODO: make this a cli switch as this value has been picked rather arbitrarily
     let interval_duration = Duration::from_millis(AUDIO_INTERVAL);
     let mut interval = time::interval(interval_duration);
-    let mut last_play_time = Instant::now()
+    let mut last_play_time = Instant::now();
+    let mut has_played_audio = false;
+
+    loop {
+        tokio::selec
