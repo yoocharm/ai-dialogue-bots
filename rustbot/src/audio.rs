@@ -24,4 +24,6 @@ pub async fn play(
     let mut has_played_audio = false;
 
     loop {
-        tokio::selec
+        tokio::select! {
+            _ = done.changed() => {
+                if *done.
