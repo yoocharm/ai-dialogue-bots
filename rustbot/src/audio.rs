@@ -26,4 +26,8 @@ pub async fn play(
     loop {
         tokio::select! {
             _ = done.changed() => {
-                if *done.
+                if *done.borrow() {
+                    break;
+                }
+            }
+            res
