@@ -33,4 +33,6 @@ pub async fn play(
             result = audio_rd.read_buf(&mut audio_data) => {
                 if let Ok(chunk) = result {
                     if chunk == 0 {
+                        break;
+                    }
                
