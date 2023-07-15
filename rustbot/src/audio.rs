@@ -35,4 +35,5 @@ pub async fn play(
                     if chunk == 0 {
                         break;
                     }
-               
+                    if audio_data.len() > AUDIO_BUFFER_SIZE {
+            
