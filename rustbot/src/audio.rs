@@ -36,4 +36,5 @@ pub async fn play(
                         break;
                     }
                     if audio_data.len() > AUDIO_BUFFER_SIZE {
-                        // NOTE: this avoids unnecessary data duplication and manages th
+                        // NOTE: this avoids unnecessary data duplication and manages the buffer efficiently
+                        let cursor = Curs
