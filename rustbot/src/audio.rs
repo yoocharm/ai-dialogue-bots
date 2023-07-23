@@ -38,3 +38,5 @@ pub async fn play(
                     if audio_data.len() > AUDIO_BUFFER_SIZE {
                         // NOTE: this avoids unnecessary data duplication and manages the buffer efficiently
                         let cursor = Cursor::new(audio_data.split_to(AUDIO_BUFFER_SIZE).freeze().to_vec());
+                        match Decoder::new(cursor) {
+                         
