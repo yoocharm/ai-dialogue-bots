@@ -41,4 +41,6 @@ pub async fn play(
                         match Decoder::new(cursor) {
                             Ok(source) => {
                                 sink.append(source);
-                                last_play_time = Instant::now()
+                                last_play_time = Instant::now();
+                                has_played_audio = true;
+               
