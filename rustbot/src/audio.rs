@@ -43,4 +43,6 @@ pub async fn play(
                                 sink.append(source);
                                 last_play_time = Instant::now();
                                 has_played_audio = true;
-               
+                            }
+                            Err(e) => {
+       
