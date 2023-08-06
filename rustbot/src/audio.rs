@@ -50,4 +50,6 @@ pub async fn play(
                         }
                     }
                 }
-     
+            }
+            _ = interval.tick() => {
+                // No aud
