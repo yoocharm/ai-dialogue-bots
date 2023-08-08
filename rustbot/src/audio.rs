@@ -54,4 +54,5 @@ pub async fn play(
             _ = interval.tick() => {
                 // No audio data received in the past interval_duration ms and we've
                 // already played some audio -- that means we can proceed with dialogue
-                // by writing a followup question into JetStream thro
+                // by writing a followup question into JetStream through jet::writer.
+                if has_played_audio && last_play_time.el
