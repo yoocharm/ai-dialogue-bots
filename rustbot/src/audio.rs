@@ -56,4 +56,5 @@ pub async fn play(
                 // already played some audio -- that means we can proceed with dialogue
                 // by writing a followup question into JetStream through jet::writer.
                 if has_played_audio && last_play_time.elapsed() >= interval_duration && sink.empty() {
-                    if 
+                    if !audio_data.is_empty() {
+                        let cursor = Cursor::new(au
