@@ -57,4 +57,5 @@ pub async fn play(
                 // by writing a followup question into JetStream through jet::writer.
                 if has_played_audio && last_play_time.elapsed() >= interval_duration && sink.empty() {
                     if !audio_data.is_empty() {
-                        let cursor = Cursor::new(au
+                        let cursor = Cursor::new(audio_data.clone().freeze().to_vec());
+                        if let
