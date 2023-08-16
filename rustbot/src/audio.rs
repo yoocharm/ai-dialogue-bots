@@ -58,4 +58,5 @@ pub async fn play(
                 if has_played_audio && last_play_time.elapsed() >= interval_duration && sink.empty() {
                     if !audio_data.is_empty() {
                         let cursor = Cursor::new(audio_data.clone().freeze().to_vec());
-                        if let
+                        if let Ok(source) = Decoder::new(cursor) {
+                            sink.appe
