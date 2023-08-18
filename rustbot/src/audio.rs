@@ -61,4 +61,6 @@ pub async fn play(
                         if let Ok(source) = Decoder::new(cursor) {
                             sink.append(source);
                             audio_data.clear();
-              
+                        }
+                    }
+                    sink.sleep_until
