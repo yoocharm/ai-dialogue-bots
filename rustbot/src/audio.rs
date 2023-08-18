@@ -66,4 +66,10 @@ pub async fn play(
                     sink.sleep_until_end();
                     // NOTE: notify jet::writer
                     audio_done.send(true)?;
-                    has_played_audio = false
+                    has_played_audio = false;
+                }
+            }
+        }
+    }
+
+    // Flush any remainin
