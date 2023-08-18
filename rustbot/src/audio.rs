@@ -63,4 +63,6 @@ pub async fn play(
                             audio_data.clear();
                         }
                     }
-                    sink.sleep_until
+                    sink.sleep_until_end();
+                    // NOTE: notify jet::writer
+             
