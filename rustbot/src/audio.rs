@@ -72,4 +72,6 @@ pub async fn play(
         }
     }
 
-    // Flush any remainin
+    // Flush any remaining data
+    if !audio_data.is_empty() {
+        let cursor = 
