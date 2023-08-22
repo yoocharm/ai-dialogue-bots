@@ -75,4 +75,5 @@ pub async fn play(
     // Flush any remaining data
     if !audio_data.is_empty() {
         let cursor = Cursor::new(audio_data.clone().to_vec());
-        if let Ok(sourc
+        if let Ok(source) = Decoder::new(cursor) {
+            sink.append(source
