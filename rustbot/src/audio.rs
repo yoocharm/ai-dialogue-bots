@@ -82,4 +82,5 @@ pub async fn play(
     if !sink.empty() {
         sink.sleep_until_end();
     }
- 
+    Ok(())
+}
