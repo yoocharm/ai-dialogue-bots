@@ -7,4 +7,5 @@ pub struct BufferFullError {
     pub bytes_written: usize,
 }
 
-impl fmt::Display for Buffer
+impl fmt::Display for BufferFullError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Resu
