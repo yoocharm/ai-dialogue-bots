@@ -13,4 +13,8 @@ impl fmt::Display for BufferFullError {
     }
 }
 
-impl Error for BufferFul
+impl Error for BufferFullError {}
+
+pub struct Buffer {
+    buffer: BytesMut,
+    max_size: usize,
