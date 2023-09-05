@@ -9,4 +9,8 @@ pub struct BufferFullError {
 
 impl fmt::Display for BufferFullError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "buffer is full, {} bytes w
+        write!(f, "buffer is full, {} bytes written", self.bytes_written)
+    }
+}
+
+impl Error for BufferFul
