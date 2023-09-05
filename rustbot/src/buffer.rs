@@ -18,3 +18,8 @@ impl Error for BufferFullError {}
 pub struct Buffer {
     buffer: BytesMut,
     max_size: usize,
+}
+
+impl Buffer {
+    pub fn new(max_size: usize) -> Self {
+       
