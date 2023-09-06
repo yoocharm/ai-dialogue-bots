@@ -23,4 +23,9 @@ pub struct Buffer {
 impl Buffer {
     pub fn new(max_size: usize) -> Self {
         Buffer {
-            buffer: BytesMut::with_capacity(m
+            buffer: BytesMut::with_capacity(max_size),
+            max_size,
+        }
+    }
+
+    pub fn write
