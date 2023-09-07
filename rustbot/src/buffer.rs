@@ -30,4 +30,8 @@ impl Buffer {
 
     pub fn write(&mut self, data: &[u8]) -> Result<usize, BufferFullError> {
         let available = self.max_size - self.buffer.len();
-        let write_len = std::
+        let write_len = std::cmp::min(data.len(), available);
+
+        self.buffer.put_slice(&data[..write_len]);
+
+    
