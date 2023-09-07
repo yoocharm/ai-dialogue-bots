@@ -29,4 +29,5 @@ impl Buffer {
     }
 
     pub fn write(&mut self, data: &[u8]) -> Result<usize, BufferFullError> {
-        let ava
+        let available = self.max_size - self.buffer.len();
+        let write_len = std::
