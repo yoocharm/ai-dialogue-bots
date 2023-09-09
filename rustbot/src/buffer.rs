@@ -35,4 +35,6 @@ impl Buffer {
         self.buffer.put_slice(&data[..write_len]);
 
         if self.buffer.len() == self.max_size {
-            return Err(Bu
+            return Err(BufferFullError {
+                bytes_written: write_len,
+    
