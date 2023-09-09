@@ -37,4 +37,9 @@ impl Buffer {
         if self.buffer.len() == self.max_size {
             return Err(BufferFullError {
                 bytes_written: write_len,
-    
+            });
+        }
+        Ok(write_len)
+    }
+
+    pub fn reset(
