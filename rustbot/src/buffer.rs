@@ -42,4 +42,8 @@ impl Buffer {
         Ok(write_len)
     }
 
-    pub fn reset(
+    pub fn reset(&mut self) {
+        self.buffer.clear();
+    }
+
+    pub fn as_bytes(&se
