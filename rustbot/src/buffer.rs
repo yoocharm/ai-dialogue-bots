@@ -46,4 +46,7 @@ impl Buffer {
         self.buffer.clear();
     }
 
-    pub fn as_bytes(&se
+    pub fn as_bytes(&self) -> Bytes {
+        self.buffer.clone().freeze()
+    }
+}
