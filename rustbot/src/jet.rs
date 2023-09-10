@@ -46,3 +46,75 @@ impl Stream {
 
         let stream = js
             .get_or_create_stream(stream::Config {
+                name: c.stream_name,
+                ..Default::default()
+            })
+            .await?;
+
+        let cons = stream
+            .create_consumer(pull::Config {
+                durable_name: Some(c.durable_name.clone()),
+                filter_subject: c.sub_subject.clone(),
+                ..Default::default()
+            })
+            .await?;
+
+        Ok(Stream {
+            writer: Writer {
+                tx: js,
+                subject: c.pub_subject.clone(),
+            },
+            reader: Reader {
+                rx: cons,
+                subject: c.sub_subject.clone(),
+            },
+        })
+    }
+}
+
+#[allow(unused)]
+pub struct Reader {
+    rx: Consumer<pull::Config>,
+    subject: String,
+}
+
+impl Reader {
+    pub async fn read(
+        self,
+        prompts: Sender<String>,
+        mut done: watch::Receiver<bool>,
+    ) -> Result<()> {
+        println!("launching JetStream Reader");
+        let mut messages = self.rx.messages().await?;
+
+        loop {
+            tokio::select! {
+                _ = done.changed() => {
+                    if *done.borrow() {
+                        return Ok(())
+                    }
+                },
+                Some(Ok(message)) = messages.next() => {
+                    println!("\n[Q]: {:?}", message.payload.to_owned());
+                    message.ack().await?;
+                    // NOTE: maybe we can send an empty string of the conversion fails?
+                    let prompt = String::from_utf8(message.payload.to_vec())?;
+                    prompts.send(prompt).await?;
+                }
+            }
+        }
+    }
+}
+
+pub struct Writer {
+    tx: jetstream::Context,
+    subject: String,
+}
+
+impl Writer {
+    pub async fn write(
+        self,
+        mut chunks: Receiver<Bytes>,
+        mut audio_done: watch::Receiver<bool>,
+        mut done: watch::Receiver<bool>,
+    ) -> Result<()> {
