@@ -118,3 +118,35 @@ impl Writer {
         mut audio_done: watch::Receiver<bool>,
         mut done: watch::Receiver<bool>,
     ) -> Result<()> {
+        println!("launching JetStream Writer");
+        let mut b = BytesMut::new();
+        loop {
+            tokio::select! {
+                _ = done.changed() => {
+                    if *done.borrow() {
+                        return Ok(())
+                    }
+                },
+                Some(chunk) = chunks.recv() => {
+                    if chunk.is_empty() {
+                        let msg = String::from_utf8(b.to_vec())?;
+                        println!("\n[A]: {}", msg);
+                        loop {
+                            tokio::select! {
+                                _ = audio_done.changed() => {
+                                    if *audio_done.borrow() {
+                                        self.tx.publish(self.subject.to_string(), b.clone().freeze())
+                                            .await?;
+                                        b.clear();
+                                        break;
+                                    }
+                                },
+                            }
+                        }
+                    }
+                    b.extend_from_slice(&chunk);
+                }
+            }
+        }
+    }
+}
