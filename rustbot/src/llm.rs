@@ -1,3 +1,6 @@
 use crate::{history, prelude::*};
 use bytes::Bytes;
-use ollama_rs::{generation::completion::request::Generatio
+use ollama_rs::{generation::completion::request::GenerationRequest, Ollama};
+use tokio::{
+    self,
+    sync::mpsc::{Receiver, Sender
