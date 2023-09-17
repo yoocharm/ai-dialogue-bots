@@ -7,4 +7,8 @@ use tokio::{
     sync::watch,
     task::JoinHandle,
 };
-use tokio_stream::Str
+use tokio_stream::StreamExt;
+
+#[derive(Clone, Debug)]
+pub struct Config {
+    pub hist_s
