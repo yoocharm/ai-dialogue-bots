@@ -15,3 +15,8 @@ pub struct Config {
     pub model_name: String,
     pub seed_prompt: Option<String>,
 }
+
+impl Default for Config {
+    fn default() -> Self {
+        Config {
+   
