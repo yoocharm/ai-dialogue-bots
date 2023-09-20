@@ -19,4 +19,5 @@ pub struct Config {
 impl Default for Config {
     fn default() -> Self {
         Config {
-   
+            hist_size: HISTORY_SIZE,
+            model_name: DE
