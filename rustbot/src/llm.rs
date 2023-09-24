@@ -22,4 +22,11 @@ impl Default for Config {
             hist_size: HISTORY_SIZE,
             model_name: DEFAULT_MODEL_NAME.to_string(),
             seed_prompt: None,
+        }
+    }
+}
+
+pub struct LLM {
+    client: Ollama,
+    model_name: String,
    
