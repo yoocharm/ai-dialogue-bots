@@ -29,4 +29,8 @@ impl Default for Config {
 pub struct LLM {
     client: Ollama,
     model_name: String,
-   
+    hist_size: usize,
+    seed_prompt: Option<String>,
+}
+
+impl LLM
