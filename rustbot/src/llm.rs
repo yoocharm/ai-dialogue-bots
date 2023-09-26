@@ -35,4 +35,7 @@ pub struct LLM {
 
 impl LLM {
     pub fn new(c: Config) -> Self {
-        let ollama = Ollama::d
+        let ollama = Ollama::default();
+        LLM {
+            client: ollama,
+            mode
