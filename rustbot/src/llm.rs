@@ -38,4 +38,6 @@ impl LLM {
         let ollama = Ollama::default();
         LLM {
             client: ollama,
-            mode
+            model_name: c.model_name,
+            hist_size: c.hist_size,
+            seed_
