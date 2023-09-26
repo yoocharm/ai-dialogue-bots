@@ -33,4 +33,6 @@ pub struct LLM {
     seed_prompt: Option<String>,
 }
 
-impl LLM
+impl LLM {
+    pub fn new(c: Config) -> Self {
+        let ollama = Ollama::d
