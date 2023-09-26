@@ -40,4 +40,9 @@ impl LLM {
             client: ollama,
             model_name: c.model_name,
             hist_size: c.hist_size,
-            seed_
+            seed_prompt: c.seed_prompt,
+        }
+    }
+
+    pub async fn stream(
+        self,
