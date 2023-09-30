@@ -48,4 +48,5 @@ impl LLM {
         self,
         mut prompts: Receiver<String>,
         jet_chunks: Sender<Bytes>,
-    
+        tts_chunks: Sender<Bytes>,
+        mut done: watch::Receiver<bool>,
