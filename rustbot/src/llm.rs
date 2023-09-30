@@ -46,3 +46,6 @@ impl LLM {
 
     pub async fn stream(
         self,
+        mut prompts: Receiver<String>,
+        jet_chunks: Sender<Bytes>,
+    
