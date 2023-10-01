@@ -53,4 +53,7 @@ impl LLM {
     ) -> Result<()> {
         println!("launching LLM stream");
         use history::History;
-        let mut history = History::new(
+        let mut history = History::new(self.hist_size);
+
+        if let Some(seed_prompt) = self.seed_prompt {
+      
