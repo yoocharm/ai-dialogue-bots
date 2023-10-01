@@ -50,3 +50,5 @@ impl LLM {
         jet_chunks: Sender<Bytes>,
         tts_chunks: Sender<Bytes>,
         mut done: watch::Receiver<bool>,
+    ) -> Result<()> {
+        println!("launching LLM stream");
