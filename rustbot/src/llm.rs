@@ -52,3 +52,5 @@ impl LLM {
         mut done: watch::Receiver<bool>,
     ) -> Result<()> {
         println!("launching LLM stream");
+        use history::History;
+        let mut history = History::new(
