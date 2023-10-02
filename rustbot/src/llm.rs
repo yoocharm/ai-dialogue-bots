@@ -57,4 +57,8 @@ impl LLM {
 
         if let Some(seed_prompt) = self.seed_prompt {
             println!("Seed prompt: {}", seed_prompt);
-            history.ad
+            history.add(seed_prompt.to_string());
+        }
+
+        loop {
+         
