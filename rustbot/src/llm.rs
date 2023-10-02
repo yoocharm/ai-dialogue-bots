@@ -56,4 +56,5 @@ impl LLM {
         let mut history = History::new(self.hist_size);
 
         if let Some(seed_prompt) = self.seed_prompt {
-      
+            println!("Seed prompt: {}", seed_prompt);
+            history.ad
