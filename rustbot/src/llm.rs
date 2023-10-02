@@ -61,4 +61,6 @@ impl LLM {
         }
 
         loop {
-         
+            tokio::select! {
+                _ = done.changed() => {
+                
