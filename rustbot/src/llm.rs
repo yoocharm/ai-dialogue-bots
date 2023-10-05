@@ -64,4 +64,7 @@ impl LLM {
             tokio::select! {
                 _ = done.changed() => {
                     if *done.borrow() {
-                        return O
+                        return Ok(())
+                    }
+                },
+            
