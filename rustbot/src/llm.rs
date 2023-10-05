@@ -67,4 +67,5 @@ impl LLM {
                         return Ok(())
                     }
                 },
-            
+                Some(prompt) = prompts.recv() => {
+                   
