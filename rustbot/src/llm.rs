@@ -68,4 +68,5 @@ impl LLM {
                     }
                 },
                 Some(prompt) = prompts.recv() => {
-                   
+                    history.add(prompt.clone());
+                    let mut stream = self.clien
