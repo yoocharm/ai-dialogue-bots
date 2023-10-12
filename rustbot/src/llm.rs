@@ -69,4 +69,5 @@ impl LLM {
                 },
                 Some(prompt) = prompts.recv() => {
                     history.add(prompt.clone());
-                    let mut stream = self.clien
+                    let mut stream = self.client
+                        .generate_stream(GenerationRequest::new
