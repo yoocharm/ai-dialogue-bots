@@ -72,4 +72,6 @@ impl LLM {
                     let mut stream = self.client
                         .generate_stream(GenerationRequest::new(
                             self.model_name.clone(),
-              
+                            history.string(),
+                        ))
+    
