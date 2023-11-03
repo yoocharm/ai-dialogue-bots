@@ -74,4 +74,6 @@ impl LLM {
                             self.model_name.clone(),
                             history.string(),
                         ))
-    
+                        .await?;
+
+                    while let Some(res)
