@@ -79,4 +79,5 @@ impl LLM {
                     while let Some(res) = stream.next().await {
                         let responses = res?;
                         for resp in responses {
-                     
+                            let resp_bytes = Bytes::from(resp.response);
+                            let jet_by
