@@ -78,3 +78,5 @@ impl LLM {
 
                     while let Some(res) = stream.next().await {
                         let responses = res?;
+                        for resp in responses {
+                     
