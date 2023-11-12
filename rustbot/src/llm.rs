@@ -80,4 +80,5 @@ impl LLM {
                         let responses = res?;
                         for resp in responses {
                             let resp_bytes = Bytes::from(resp.response);
-                            let jet_by
+                            let jet_bytes = resp_bytes.clone();
+                            let jet_ch = jet_
