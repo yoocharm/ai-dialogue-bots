@@ -81,4 +81,5 @@ impl LLM {
                         for resp in responses {
                             let resp_bytes = Bytes::from(resp.response);
                             let jet_bytes = resp_bytes.clone();
-                            let jet_ch = jet_
+                            let jet_ch = jet_chunks.clone();
+                            let jet_task: JoinHandle
