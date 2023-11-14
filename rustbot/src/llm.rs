@@ -84,4 +84,6 @@ impl LLM {
                             let jet_ch = jet_chunks.clone();
                             let jet_task: JoinHandle<Result<()>> = tokio::spawn(async move {
                                jet_ch.send(Bytes::from(jet_bytes)).await?;
-                  
+                               Ok(())
+                            });
+                     
