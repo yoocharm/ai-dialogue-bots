@@ -86,4 +86,5 @@ impl LLM {
                                jet_ch.send(Bytes::from(jet_bytes)).await?;
                                Ok(())
                             });
-                     
+                            let tts_bytes = resp_bytes.clone();
+                            let
