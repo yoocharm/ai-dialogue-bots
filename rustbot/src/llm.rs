@@ -89,4 +89,5 @@ impl LLM {
                             let tts_bytes = resp_bytes.clone();
                             let tts_ch = tts_chunks.clone();
                             let tts_task: JoinHandle<Result<()>> = tokio::spawn(async move {
-    
+                                tts_ch.send(Bytes::from(tts_bytes)).await?;
+              
