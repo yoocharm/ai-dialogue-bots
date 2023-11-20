@@ -92,4 +92,5 @@ impl LLM {
                                 tts_ch.send(Bytes::from(tts_bytes)).await?;
                                 Ok(())
                             });
-                  
+                            match tokio::try_join!(jet_task, tts_task) {
+         
