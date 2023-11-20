@@ -93,4 +93,6 @@ impl LLM {
                                 Ok(())
                             });
                             match tokio::try_join!(jet_task, tts_task) {
+                                Ok(_) => {}
+                                Err(e) => {
          
