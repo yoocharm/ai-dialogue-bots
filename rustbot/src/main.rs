@@ -10,4 +10,11 @@ use tokio::{
 mod audio;
 mod buffer;
 mod cli;
-mod histor
+mod history;
+mod jet;
+mod llm;
+mod prelude;
+mod signal;
+mod tts;
+
+#[
