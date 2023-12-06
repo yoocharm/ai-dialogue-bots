@@ -17,4 +17,6 @@ mod prelude;
 mod signal;
 mod tts;
 
-#[
+#[tokio::main]
+async fn main() -> Result<()> {
+    let args = cli:
