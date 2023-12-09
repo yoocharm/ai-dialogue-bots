@@ -19,4 +19,6 @@ mod tts;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let args = cli:
+    let args = cli::App::parse();
+
+    let seed_prompt = args.prompt.seed.unwrap();
