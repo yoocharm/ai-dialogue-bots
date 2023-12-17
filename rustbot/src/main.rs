@@ -22,3 +22,6 @@ async fn main() -> Result<()> {
     let args = cli::App::parse();
 
     let seed_prompt = args.prompt.seed.unwrap();
+
+    // NOTE: we could also add Stream::builder to the jet module
+    // and inst
