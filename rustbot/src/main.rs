@@ -24,4 +24,6 @@ async fn main() -> Result<()> {
     let seed_prompt = args.prompt.seed.unwrap();
 
     // NOTE: we could also add Stream::builder to the jet module
-    // and inst
+    // and instead of passing config we could build it by chaining methods.
+    let c = jet::Config {
+        durab
