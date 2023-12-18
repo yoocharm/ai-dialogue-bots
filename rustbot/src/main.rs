@@ -26,4 +26,6 @@ async fn main() -> Result<()> {
     // NOTE: we could also add Stream::builder to the jet module
     // and instead of passing config we could build it by chaining methods.
     let c = jet::Config {
-        durab
+        durable_name: args.bot.name,
+        stream_name: args.bot.stream_name,
+   
