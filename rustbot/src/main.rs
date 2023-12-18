@@ -29,4 +29,5 @@ async fn main() -> Result<()> {
         durable_name: args.bot.name,
         stream_name: args.bot.stream_name,
         pub_subject: args.bot.pub_subject,
-        sub_subject:
+        sub_subject: args.bot.sub_subject,
+        ..jet::Config::def
