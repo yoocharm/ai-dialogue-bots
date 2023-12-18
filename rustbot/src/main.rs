@@ -28,4 +28,5 @@ async fn main() -> Result<()> {
     let c = jet::Config {
         durable_name: args.bot.name,
         stream_name: args.bot.stream_name,
-   
+        pub_subject: args.bot.pub_subject,
+        sub_subject:
