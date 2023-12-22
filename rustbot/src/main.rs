@@ -30,4 +30,8 @@ async fn main() -> Result<()> {
         stream_name: args.bot.stream_name,
         pub_subject: args.bot.pub_subject,
         sub_subject: args.bot.sub_subject,
-        ..jet::Config::def
+        ..jet::Config::default()
+    };
+    let s = jet::Stream::new(c).await?;
+
+    // NOTE: we could also 
