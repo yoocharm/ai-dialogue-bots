@@ -34,4 +34,5 @@ async fn main() -> Result<()> {
     };
     let s = jet::Stream::new(c).await?;
 
-    // NOTE: we could also 
+    // NOTE: we could also add LLM::builder to the llm module
+    // and instead of passing confi
