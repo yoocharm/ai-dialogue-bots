@@ -36,4 +36,5 @@ async fn main() -> Result<()> {
 
     // NOTE: we could also add LLM::builder to the llm module
     // and instead of passing config we could build it by chaining methods.
-    let
+    let c = llm::Config {
+        hist_size: args.llm.hist_s
