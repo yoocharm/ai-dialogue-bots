@@ -39,4 +39,7 @@ async fn main() -> Result<()> {
     let c = llm::Config {
         hist_size: args.llm.hist_size,
         model_name: args.llm.model_name,
-        seed_prompt: Some(see
+        seed_prompt: Some(seed_prompt),
+        ..llm::Config::default()
+    };
+    let l = llm::L
