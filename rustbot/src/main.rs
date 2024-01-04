@@ -42,4 +42,6 @@ async fn main() -> Result<()> {
         seed_prompt: Some(seed_prompt),
         ..llm::Config::default()
     };
-    let l = llm::L
+    let l = llm::LLM::new(c);
+
+    // NOTE: we could also add TTS::builder to th
