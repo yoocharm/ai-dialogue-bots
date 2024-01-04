@@ -44,4 +44,5 @@ async fn main() -> Result<()> {
     };
     let l = llm::LLM::new(c);
 
-    // NOTE: we could also add TTS::builder to th
+    // NOTE: we could also add TTS::builder to the tts module
+    // and instead of passing config we cou
