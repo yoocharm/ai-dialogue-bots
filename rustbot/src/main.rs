@@ -46,4 +46,6 @@ async fn main() -> Result<()> {
 
     // NOTE: we could also add TTS::builder to the tts module
     // and instead of passing config we could build it by chaining methods.
-    let c = tts::Config
+    let c = tts::Config {
+        voice_id: Some(args.tts.voice_id),
+        ..
