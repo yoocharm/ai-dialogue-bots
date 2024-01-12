@@ -48,4 +48,8 @@ async fn main() -> Result<()> {
     // and instead of passing config we could build it by chaining methods.
     let c = tts::Config {
         voice_id: Some(args.tts.voice_id),
-        ..
+        ..tts::Config::default()
+    };
+    let t = tts::TTS::new(c);
+
+    let (prompts_t
