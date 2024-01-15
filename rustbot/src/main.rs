@@ -54,4 +54,5 @@ async fn main() -> Result<()> {
 
     let (prompts_tx, prompts_rx) = mpsc::channel::<String>(32);
     let (jet_chunks_tx, jet_chunks_rx) = mpsc::channel::<Bytes>(32);
-    let (tts_chunks_tx, tts_c
+    let (tts_chunks_tx, tts_chunks_rx) = mpsc::channel::<Bytes>(32);
+    let (aud_done_tx, aud_done_rx)
