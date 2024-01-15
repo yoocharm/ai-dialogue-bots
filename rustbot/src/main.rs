@@ -57,4 +57,5 @@ async fn main() -> Result<()> {
     let (tts_chunks_tx, tts_chunks_rx) = mpsc::channel::<Bytes>(32);
     let (aud_done_tx, aud_done_rx) = watch::channel(false);
 
-    // NOTE: used for cancellation when 
+    // NOTE: used for cancellation when SIGINT is trapped.
+    let (watch_tx, watch_rx) = watch::channe
