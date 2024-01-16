@@ -66,4 +66,5 @@ async fn main() -> Result<()> {
 
     println!("launching workers");
 
-    let (_stream, stream_handle) = OutputStream
+    let (_stream, stream_handle) = OutputStream::try_default().unwrap();
+    let sink = Sink::try_new(&stream_handle).un
