@@ -60,4 +60,6 @@ async fn main() -> Result<()> {
     // NOTE: used for cancellation when SIGINT is trapped.
     let (watch_tx, watch_rx) = watch::channel(false);
     let jet_wr_watch_rx = watch_rx.clone();
-    let jet_rd_watch_rx =
+    let jet_rd_watch_rx = watch_rx.clone();
+    let tts_watch_rx = watch_rx.clone();
+   
