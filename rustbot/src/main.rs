@@ -62,4 +62,6 @@ async fn main() -> Result<()> {
     let jet_wr_watch_rx = watch_rx.clone();
     let jet_rd_watch_rx = watch_rx.clone();
     let tts_watch_rx = watch_rx.clone();
-   
+    let aud_watch_rx = watch_rx.clone();
+
+    println!("launching
