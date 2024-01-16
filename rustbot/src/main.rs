@@ -64,4 +64,6 @@ async fn main() -> Result<()> {
     let tts_watch_rx = watch_rx.clone();
     let aud_watch_rx = watch_rx.clone();
 
-    println!("launching
+    println!("launching workers");
+
+    let (_stream, stream_handle) = OutputStream
