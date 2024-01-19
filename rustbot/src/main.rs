@@ -67,4 +67,7 @@ async fn main() -> Result<()> {
     println!("launching workers");
 
     let (_stream, stream_handle) = OutputStream::try_default().unwrap();
-    let sink = Sink::try_new(&stream_handle).un
+    let sink = Sink::try_new(&stream_handle).unwrap();
+    let (audio_wr, audio_rd) = io::duplex(1024);
+
+    let 
