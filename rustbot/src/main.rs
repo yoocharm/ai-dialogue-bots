@@ -71,4 +71,4 @@ async fn main() -> Result<()> {
     let (audio_wr, audio_rd) = io::duplex(1024);
 
     let tts_stream = tokio::spawn(t.stream(audio_wr, tts_chunks_rx, tts_watch_rx));
- 
+    let llm_stream = tokio::spawn(l.stream(prompts_rx, jet_chun
