@@ -70,4 +70,5 @@ async fn main() -> Result<()> {
     let sink = Sink::try_new(&stream_handle).unwrap();
     let (audio_wr, audio_rd) = io::duplex(1024);
 
-    let 
+    let tts_stream = tokio::spawn(t.stream(audio_wr, tts_chunks_rx, tts_watch_rx));
+ 
