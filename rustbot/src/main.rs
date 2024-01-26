@@ -74,4 +74,5 @@ async fn main() -> Result<()> {
     let llm_stream = tokio::spawn(l.stream(prompts_rx, jet_chunks_tx, tts_chunks_tx, watch_rx));
     let jet_write = tokio::spawn(s.writer.write(jet_chunks_rx, aud_done_rx, jet_wr_watch_rx));
     let jet_read = tokio::spawn(s.reader.read(prompts_tx, jet_rd_watch_rx));
-    let audio_task = tokio::spawn(audio::play(audio_rd, sink, au
+    let audio_task = tokio::spawn(audio::play(audio_rd, sink, aud_done_tx, aud_watch_rx));
+    let sig_handler = tokio::spawn(si
