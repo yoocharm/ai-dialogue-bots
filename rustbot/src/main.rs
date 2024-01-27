@@ -75,4 +75,6 @@ async fn main() -> Result<()> {
     let jet_write = tokio::spawn(s.writer.write(jet_chunks_rx, aud_done_rx, jet_wr_watch_rx));
     let jet_read = tokio::spawn(s.reader.read(prompts_tx, jet_rd_watch_rx));
     let audio_task = tokio::spawn(audio::play(audio_rd, sink, aud_done_tx, aud_watch_rx));
-    let sig_handler = tokio::spawn(si
+    let sig_handler = tokio::spawn(signal::trap(watch_tx));
+
+    // NOTE: we're not waiting for the signal handl
