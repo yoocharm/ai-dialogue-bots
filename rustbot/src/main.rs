@@ -78,4 +78,5 @@ async fn main() -> Result<()> {
     let sig_handler = tokio::spawn(signal::trap(watch_tx));
 
     // NOTE: we're not waiting for the signal handler here:
-    // we abort it once any of the spawn worker tasks
+    // we abort it once any of the spawn worker tasks exits.
+    match tokio::try_join!(tts_stream, llm_stream, jet_write,
