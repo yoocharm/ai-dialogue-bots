@@ -77,4 +77,5 @@ async fn main() -> Result<()> {
     let audio_task = tokio::spawn(audio::play(audio_rd, sink, aud_done_tx, aud_watch_rx));
     let sig_handler = tokio::spawn(signal::trap(watch_tx));
 
-    // NOTE: we're not waiting for the signal handl
+    // NOTE: we're not waiting for the signal handler here:
+    // we abort it once any of the spawn worker tasks
