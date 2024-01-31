@@ -79,4 +79,7 @@ async fn main() -> Result<()> {
 
     // NOTE: we're not waiting for the signal handler here:
     // we abort it once any of the spawn worker tasks exits.
-    match tokio::try_join!(tts_stream, llm_stream, jet_write,
+    match tokio::try_join!(tts_stream, llm_stream, jet_write, jet_read, audio_task) {
+        Ok(_) => {}
+        Err(e) => {
+   
