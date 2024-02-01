@@ -82,4 +82,6 @@ async fn main() -> Result<()> {
     match tokio::try_join!(tts_stream, llm_stream, jet_write, jet_read, audio_task) {
         Ok(_) => {}
         Err(e) => {
-   
+            println!("Error running bot: {}", e);
+        }
+    
