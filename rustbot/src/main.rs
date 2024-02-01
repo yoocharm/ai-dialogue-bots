@@ -84,4 +84,7 @@ async fn main() -> Result<()> {
         Err(e) => {
             println!("Error running bot: {}", e);
         }
-    
+    }
+    sig_handler.abort();
+    Ok(())
+}
