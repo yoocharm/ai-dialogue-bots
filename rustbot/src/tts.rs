@@ -11,3 +11,8 @@ pub struct Config {
     pub sample_rate: Option<i32>,
     pub buf_size: usize,
 }
+
+impl Default for Config {
+    fn default() -> Self {
+        Config {
+  
