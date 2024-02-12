@@ -8,3 +8,6 @@ pub struct Config {
     pub voice_id: Option<String>,
     pub quality: Option<Quality>,
     pub speed: Option<f32>,
+    pub sample_rate: Option<i32>,
+    pub buf_size: usize,
+}
