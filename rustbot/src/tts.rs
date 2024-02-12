@@ -5,4 +5,6 @@ use tokio::{self, sync::mpsc::Receiver, sync::watch};
 
 #[derive(Debug, Clone)]
 pub struct Config {
-    pub voice_id: Option<Str
+    pub voice_id: Option<String>,
+    pub quality: Option<Quality>,
+    pub speed: Option<f32>,
