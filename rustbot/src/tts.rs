@@ -15,4 +15,5 @@ pub struct Config {
 impl Default for Config {
     fn default() -> Self {
         Config {
-  
+            voice_id: Some(DEFAULT_VOICE_ID.to_string()),
+   
