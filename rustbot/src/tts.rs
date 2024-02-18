@@ -18,4 +18,5 @@ impl Default for Config {
             voice_id: Some(DEFAULT_VOICE_ID.to_string()),
             quality: Some(Quality::Low),
             speed: Some(1.0),
-  
+            sample_rate: Some(24000),
+            buf_size: 
