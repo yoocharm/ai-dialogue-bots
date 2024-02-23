@@ -19,4 +19,10 @@ impl Default for Config {
             quality: Some(Quality::Low),
             speed: Some(1.0),
             sample_rate: Some(24000),
-            buf_size: 
+            buf_size: MAX_TTS_BUFFER_SIZE,
+        }
+    }
+}
+
+pub struct TTS {
+    cl
