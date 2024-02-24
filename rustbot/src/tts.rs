@@ -25,4 +25,9 @@ impl Default for Config {
 }
 
 pub struct TTS {
-    cl
+    client: api::Client,
+    config: Config,
+}
+
+impl TTS {
+    pub fn new(c: Config)
