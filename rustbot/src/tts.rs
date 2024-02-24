@@ -33,3 +33,8 @@ impl TTS {
     pub fn new(c: Config) -> TTS {
         TTS {
             client: api::Client::new(),
+            config: c,
+        }
+    }
+
+    pub async fn stream<
