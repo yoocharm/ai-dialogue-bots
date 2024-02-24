@@ -37,4 +37,8 @@ impl TTS {
         }
     }
 
-    pub async fn stream<
+    pub async fn stream<W>(
+        self,
+        mut w: W,
+        mut chunks: Receiver<Bytes>,
+        mut d
