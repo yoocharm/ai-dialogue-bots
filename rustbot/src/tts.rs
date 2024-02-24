@@ -30,4 +30,6 @@ pub struct TTS {
 }
 
 impl TTS {
-    pub fn new(c: Config)
+    pub fn new(c: Config) -> TTS {
+        TTS {
+            client: api::Client::new(),
