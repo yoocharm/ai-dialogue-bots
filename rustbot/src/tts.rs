@@ -41,4 +41,6 @@ impl TTS {
         self,
         mut w: W,
         mut chunks: Receiver<Bytes>,
-        mut d
+        mut done: watch::Receiver<bool>,
+    ) -> Result<()>
+    
