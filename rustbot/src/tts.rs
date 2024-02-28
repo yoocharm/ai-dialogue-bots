@@ -43,4 +43,7 @@ impl TTS {
         mut chunks: Receiver<Bytes>,
         mut done: watch::Receiver<bool>,
     ) -> Result<()>
-    
+    where
+        W: tokio::io::AsyncWriteExt + Unpin,
+    {
+       
