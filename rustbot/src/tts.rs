@@ -47,4 +47,6 @@ impl TTS {
         W: tokio::io::AsyncWriteExt + Unpin,
     {
         println!("launching TTS stream");
-        let mut buf = buffer::Buffer::ne
+        let mut buf = buffer::Buffer::new(self.config.buf_size);
+        let mut req = TTSStreamReq {
+  
