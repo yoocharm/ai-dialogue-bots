@@ -46,4 +46,5 @@ impl TTS {
     where
         W: tokio::io::AsyncWriteExt + Unpin,
     {
-       
+        println!("launching TTS stream");
+        let mut buf = buffer::Buffer::ne
