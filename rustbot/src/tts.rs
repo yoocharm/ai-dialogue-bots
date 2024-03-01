@@ -49,4 +49,5 @@ impl TTS {
         println!("launching TTS stream");
         let mut buf = buffer::Buffer::new(self.config.buf_size);
         let mut req = TTSStreamReq {
-  
+            voice: self.config.voice_id,
+            quality: self.config.quality
