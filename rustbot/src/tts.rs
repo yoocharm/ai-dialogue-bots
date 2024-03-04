@@ -52,4 +52,9 @@ impl TTS {
             voice: self.config.voice_id,
             quality: self.config.quality,
             speed: self.config.speed,
-            sample_rate: self.conf
+            sample_rate: self.config.sample_rate,
+            ..Default::default()
+        };
+
+        loop {
+    
