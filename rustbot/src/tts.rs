@@ -59,4 +59,6 @@ impl TTS {
         loop {
             tokio::select! {
                 _ = done.changed() => {
-       
+                    if *done.borrow() {
+                        return Ok(())
+             
