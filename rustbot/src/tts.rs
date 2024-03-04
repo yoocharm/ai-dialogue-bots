@@ -61,4 +61,7 @@ impl TTS {
                 _ = done.changed() => {
                     if *done.borrow() {
                         return Ok(())
-             
+                    }
+                },
+                Some(chunk) = chunks.recv() => {
+   
