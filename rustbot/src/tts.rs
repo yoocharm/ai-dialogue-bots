@@ -57,4 +57,6 @@ impl TTS {
         };
 
         loop {
-    
+            tokio::select! {
+                _ = done.changed() => {
+       
