@@ -65,4 +65,5 @@ impl TTS {
                 },
                 Some(chunk) = chunks.recv() => {
                     if chunk.is_empty() {
-                        let tex
+                        let text = String::from_utf8(buf.as_bytes().to_vec())?;
+                 
