@@ -64,4 +64,5 @@ impl TTS {
                     }
                 },
                 Some(chunk) = chunks.recv() => {
-   
+                    if chunk.is_empty() {
+                        let tex
