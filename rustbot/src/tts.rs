@@ -67,4 +67,5 @@ impl TTS {
                     if chunk.is_empty() {
                         let text = String::from_utf8(buf.as_bytes().to_vec())?;
                         req.text = Some(text);
-                        self.client.wr
+                        self.client.write_audio_stream(&mut w, &req).await?;
+                        b
