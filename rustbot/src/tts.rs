@@ -68,4 +68,7 @@ impl TTS {
                         let text = String::from_utf8(buf.as_bytes().to_vec())?;
                         req.text = Some(text);
                         self.client.write_audio_stream(&mut w, &req).await?;
-                        b
+                        buf.reset();
+                        continue
+                    }
+        
