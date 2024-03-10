@@ -71,4 +71,5 @@ impl TTS {
                         buf.reset();
                         continue
                     }
-        
+                    match buf.write(chunk.as_ref()) {
+                 
