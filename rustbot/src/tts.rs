@@ -72,4 +72,6 @@ impl TTS {
                         continue
                     }
                     match buf.write(chunk.as_ref()) {
-                 
+                        Ok(_) => {},
+                        Err(e) => {
+               
