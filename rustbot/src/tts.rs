@@ -74,4 +74,6 @@ impl TTS {
                     match buf.write(chunk.as_ref()) {
                         Ok(_) => {},
                         Err(e) => {
-                            let text = String::from_utf8(buf.as_bytes().to
+                            let text = String::from_utf8(buf.as_bytes().to_vec())?;
+                            req.text = Some(text);
+ 
