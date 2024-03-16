@@ -79,4 +79,5 @@ impl TTS {
                             self.client.write_audio_stream(&mut w, &req).await?;
                             buf.reset();
                             let rem = chunk.len() - e.bytes_written;
-                      
+                            let chunk_slice = chunk.as_ref();
+                            buf
