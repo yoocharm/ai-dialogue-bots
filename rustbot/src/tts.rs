@@ -82,4 +82,9 @@ impl TTS {
                             let chunk_slice = chunk.as_ref();
                             buf.write(&chunk_slice[rem..])?;
                         }
-                    
+                    }
+                }
+            }
+        }
+    }
+}
