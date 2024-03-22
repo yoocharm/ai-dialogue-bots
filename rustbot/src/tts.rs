@@ -80,4 +80,6 @@ impl TTS {
                             buf.reset();
                             let rem = chunk.len() - e.bytes_written;
                             let chunk_slice = chunk.as_ref();
-                            buf
+                            buf.write(&chunk_slice[rem..])?;
+                        }
+                    
